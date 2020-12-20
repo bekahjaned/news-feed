@@ -2,13 +2,12 @@ import React from 'react';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import { NewsItemWrap } from '../../Elements/NewsItemWrap/';
 import { NewsItemBodyWrap } from '../../Elements/NewsItemBodyWrap/'
 import { NewsItemFooterWrap } from '../../Elements/NewsItemFooterWrap/';
 
-function NewsItem({image, title, description, url, date, onClick}) {
+function NewsItem({image, title, description, url, date, icon, onClick}) {
     
    
     return (
@@ -24,7 +23,7 @@ function NewsItem({image, title, description, url, date, onClick}) {
             <NewsItemFooterWrap>
                 <p>{date}</p>
                 <div>
-                    <FontAwesomeIcon onClick={onClick} className="icon" icon={faHeart} />
+                    <FontAwesomeIcon onClick={onClick} className="icon" icon={icon} />
                 </div>  
             </NewsItemFooterWrap>
         </NewsItemWrap>

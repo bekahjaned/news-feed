@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { NewsItemWrap } from '../../Elements/NewsItemWrap/';
 import { NewsItemFooterWrap } from '../../Elements/NewsItemFooterWrap/';
 
-function FaveNewsItem({title, description, url, date, onClick}) {
+function FaveNewsItem({title, description, url, date, icon, onClick}) {
     return (
         <NewsItemWrap>
             <h3>{title}</h3>
@@ -15,7 +14,7 @@ function FaveNewsItem({title, description, url, date, onClick}) {
             <NewsItemFooterWrap>
                 <p>{date}</p>
                 <div>
-                    <FontAwesomeIcon onClick={onClick} className="icon" icon={faTrash} />
+                    <FontAwesomeIcon onClick={onClick} className="icon" icon={icon} />
                 </div>  
             </NewsItemFooterWrap>
         </NewsItemWrap>

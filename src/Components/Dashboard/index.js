@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import { DashboardWrap } from '../../Elements/DashboardWrap/'
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
 import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
@@ -82,7 +85,8 @@ class Dashboard extends React.Component {
                         title={fave.title} 
                         description={fave.abstract}
                         url={fave.url}
-                        date={fave.published_date}  
+                        date={fave.published_date}
+                        icon={faTrash} 
                         onClick={this.deleteFave.bind(this, i)}
                     />
                 )}
@@ -98,6 +102,7 @@ class Dashboard extends React.Component {
                         description={article.abstract}
                         url={article.url}
                         date={article.published_date}
+                        icon={faHeart}
                         onClick={this.addFave.bind(this, i)}
                     />
                 )}
