@@ -27,9 +27,7 @@ function NewsItem({image, title, description, url, date, icon, onClick}) {
             </NewsItemBodyWrap>
             <NewsItemFooterWrap>
                 <p>{date}</p>
-                <div>
-                    <FontAwesomeIcon onClick={onClick} className="icon" icon={icon} />
-                </div>  
+                <FontAwesomeIcon onClick={onClick} className="icon" icon={icon} /> 
             </NewsItemFooterWrap>
         </NewsItemWrap>
     );

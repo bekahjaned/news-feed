@@ -12,20 +12,16 @@ export const NewsItemFooterWrap = styled.div`
         color: rgba(0, 0, 0, 0.7);
     }
 
-    div {
-        text-align: right;
+    .icon {
+        color: #9143DF;
+        cursor: pointer;
 
-        .icon {
-            color: #9143DF;
-            cursor: pointer;
-
-            :hover {
-                color: #6B1FB6;
-            }
+        :hover {
+            color: #6B1FB6;
+        }
     
-            :active {
-                color: #51188A;
-            }
+        :active {
+            color: #51188A;
         }
     }
 
