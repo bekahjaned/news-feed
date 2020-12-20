@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
         };
 
         this.getNews()
-        setInterval(this.getNews, 60000);
+        setInterval(this.getNews, 180000);
     };
 
       
