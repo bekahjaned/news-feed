@@ -78,6 +78,7 @@ class Dashboard extends React.Component {
                     <FaveNewsItem 
                         index={i}
                         key={fave.title}
+                        image={fave.thumbnail_standard}
                         title={fave.title} 
                         description={fave.abstract}
                         url={fave.url}
@@ -92,6 +93,7 @@ class Dashboard extends React.Component {
                     <NewsItem 
                         index={i}
                         key={article.title}
+                        image={article.thumbnail_standard}
                         title={article.title} 
                         description={article.abstract}
                         url={article.url}
