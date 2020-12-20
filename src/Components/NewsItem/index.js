@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { NewsItemWrap } from '../../Elements/NewsItemWrap/';
@@ -9,6 +8,7 @@ import { NewsItemFooterWrap } from '../../Elements/NewsItemFooterWrap/';
 
 import ThumbnailImage from '../ThumbnailImage/'
 import NewsText from '../NewsText/'
+import Date from '../Date/'
 
 function NewsItem({image, title, description, url, date, icon, onClick}) {
     
@@ -27,7 +27,9 @@ function NewsItem({image, title, description, url, date, icon, onClick}) {
                 />
             </NewsItemBodyWrap>
             <NewsItemFooterWrap>
-                <p>{date}</p>
+                <Date
+                    date={date}
+                />
                 <FontAwesomeIcon 
                     onClick={onClick} 
                     className="icon" 
