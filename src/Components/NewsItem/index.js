@@ -8,6 +8,7 @@ import { NewsItemBodyWrap } from '../../Elements/NewsItemBodyWrap/'
 import { NewsItemFooterWrap } from '../../Elements/NewsItemFooterWrap/';
 
 import ThumbnailImage from '../ThumbnailImage/'
+import NewsText from '../NewsText/'
 
 function NewsItem({image, title, description, url, date, icon, onClick}) {
     
@@ -19,15 +20,18 @@ function NewsItem({image, title, description, url, date, icon, onClick}) {
                     src={image} 
                     alt={description} 
                 />
-                <div>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                    <a href={url} target="_blank" rel="noreferrer">More info here</a>
-                </div>
+                <NewsText 
+                    title={title}
+                    description={description}
+                    url={url}
+                />
             </NewsItemBodyWrap>
             <NewsItemFooterWrap>
                 <p>{date}</p>
-                <FontAwesomeIcon onClick={onClick} className="icon" icon={icon} /> 
+                <FontAwesomeIcon 
+                    onClick={onClick} 
+                    className="icon" 
+                    icon={icon} /> 
             </NewsItemFooterWrap>
         </NewsItemWrap>
     );
