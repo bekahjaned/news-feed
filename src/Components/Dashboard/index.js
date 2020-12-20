@@ -22,23 +22,38 @@ class Dashboard extends React.Component {
             articles: [],
             faves: []
         };
-
-        this.getNews()
-        setInterval(this.getNews, 180000);
-    };
-
+       
+    }
     
+    _isMounted = false;
+
     getNews = async () => {
         try {
           let data = await axios.get(`${url}`).then(({ data }) => data);
           let articles = data.results;
-          this.setState({ articles: articles });
-          console.log("New news!");
+
+          if(this._isMounted) {
+            this.setState({ articles: articles });
+            console.log("New news!");
+          }
+          
         } catch (err) {
           console.log(err);
         };
     };
 
+    componentDidMount = () => {
+        this._isMounted = true;
+
+        this.getNews() 
+        setInterval(this.getNews, 180000); 
+    }
+
+    componentWillUnmount = () => {
+        this._isMounted = false;
+    }    
+
+    
     // is this weird?
     // I put it here so I am just updating it in addFave()
     favesSet = new Set();
