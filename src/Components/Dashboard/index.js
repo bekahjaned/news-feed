@@ -9,7 +9,6 @@ import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
 import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 
 import NewsItem from '../NewsItem/';
-import FaveNewsItem from '../FaveNewsItem/';
 
 
 // const apiKey = '43256f4d342e40d5a57cf8f026b81473';
@@ -78,7 +77,7 @@ class Dashboard extends React.Component {
             <FavesPanelWrap>
                 <h2>Favourites</h2>
                 {this.state.faves.map((fave, i) => 
-                    <FaveNewsItem 
+                    <NewsItem 
                         index={i}
                         key={fave.title}
                         image={fave.thumbnail_standard}
