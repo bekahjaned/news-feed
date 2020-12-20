@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import * as cron from 'node-cron'
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -11,49 +12,50 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 import SubHeader from '../SubHeader/'
 import NewsItem from '../NewsItem/';
 
+// need to hide the key
 const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
-const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`;
+const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
 class Dashboard extends React.Component {
-    constructor() {
-        super()
+    state = {
+        articles: [],
+        faves: [],
+    };
 
-        this.state = {
-            articles: [],
-            faves: []
-        };
-       
-    }
-    
     _isMounted = false;
+
+    componentDidMount = () => {
+        this._isMounted = true;
+        this.getNews() 
+        this.task.start();
+    }
+
+    componentWillUnmount = () => {
+        this._isMounted = false;
+        this.task.stop();
+    } 
 
     getNews = async () => {
         try {
-          let data = await axios.get(`${url}`).then(({ data }) => data);
-          let articles = data.results;
+          let data = await axios.get(`${url}`)
+            .then(({ data }) => data);
+                let articles = data.results;
 
-          if(this._isMounted) {
-            this.setState({ articles: articles });
-            console.log("New news!");
-          }
-          
+                if(this._isMounted === true) {
+                    this.setState({ 
+                        articles: articles 
+                    });
+                } 
         } catch (err) {
           console.log(err);
         };
     };
 
-    componentDidMount = () => {
-        this._isMounted = true;
+    task = cron.schedule('5 * * * * *', () => {
+        this.getNews();
+      });
 
-        this.getNews() 
-        setInterval(this.getNews, 180000); 
-    }
 
-    componentWillUnmount = () => {
-        this._isMounted = false;
-    }    
-
-    
     // is this weird?
     // I put it here so I am just updating it in addFave()
     favesSet = new Set();
