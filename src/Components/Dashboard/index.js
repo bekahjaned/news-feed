@@ -1,16 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import { DashboardWrap } from '../../Elements/DashboardWrap/'
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
 import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 
+import SubHeader from '../SubHeader/'
 import NewsItem from '../NewsItem/';
-import FaveNewsItem from '../FaveNewsItem/';
-
-
-// const apiKey = '43256f4d342e40d5a57cf8f026b81473';
-// const url = `http://newsapi.org/v2/top-headlines?country=ca&pageSize=30&apiKey=${apiKey}`;
 
 const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`;
@@ -28,7 +27,7 @@ class Dashboard extends React.Component {
         setInterval(this.getNews, 180000);
     };
 
-      
+    
     getNews = async () => {
         try {
           let data = await axios.get(`${url}`).then(({ data }) => data);
@@ -44,7 +43,7 @@ class Dashboard extends React.Component {
     // I put it here so I am just updating it in addFave()
     favesSet = new Set();
 
-    addFave = (index, favesSet) => {
+    addFave = (index) => {
         let faveArticle = this.state.articles[index];
         this.favesSet.add(faveArticle);
         
@@ -73,22 +72,23 @@ class Dashboard extends React.Component {
       return (
         <DashboardWrap>
             <FavesPanelWrap>
-                <h2>Favourites</h2>
+                <SubHeader text="Favourites" />
                 {this.state.faves.map((fave, i) => 
-                    <FaveNewsItem 
+                    <NewsItem 
                         index={i}
                         key={fave.title}
                         image={fave.thumbnail_standard}
                         title={fave.title} 
                         description={fave.abstract}
                         url={fave.url}
-                        date={fave.published_date}  
+                        date={fave.published_date}
+                        icon={faTrash} 
                         onClick={this.deleteFave.bind(this, i)}
                     />
                 )}
             </FavesPanelWrap>
             <NewsFeedWrap>
-                <h2>News Feed</h2>
+                <SubHeader text="News Feed" />
                 {this.state.articles.map((article, i) => 
                     <NewsItem 
                         index={i}
@@ -98,6 +98,7 @@ class Dashboard extends React.Component {
                         description={article.abstract}
                         url={article.url}
                         date={article.published_date}
+                        icon={faHeart}
                         onClick={this.addFave.bind(this, i)}
                     />
                 )}
