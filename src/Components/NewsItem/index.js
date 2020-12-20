@@ -7,13 +7,18 @@ import { NewsItemWrap } from '../../Elements/NewsItemWrap/';
 import { NewsItemBodyWrap } from '../../Elements/NewsItemBodyWrap/'
 import { NewsItemFooterWrap } from '../../Elements/NewsItemFooterWrap/';
 
+import ThumbnailImage from '../ThumbnailImage/'
+
 function NewsItem({image, title, description, url, date, icon, onClick}) {
     
    
     return (
         <NewsItemWrap>
             <NewsItemBodyWrap>
-                <img src={image} alt={description} />
+                <ThumbnailImage 
+                    src={image} 
+                    alt={description} 
+                />
                 <div>
                     <h3>{title}</h3>
                     <p>{description}</p>
