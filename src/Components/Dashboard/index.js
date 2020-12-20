@@ -8,6 +8,7 @@ import { DashboardWrap } from '../../Elements/DashboardWrap/'
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
 import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 
+import SubHeader from '../SubHeader/'
 import NewsItem from '../NewsItem/';
 
 const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
@@ -71,7 +72,7 @@ class Dashboard extends React.Component {
       return (
         <DashboardWrap>
             <FavesPanelWrap>
-                <h2>Favourites</h2>
+                <SubHeader text="Favourites" />
                 {this.state.faves.map((fave, i) => 
                     <NewsItem 
                         index={i}
@@ -87,7 +88,7 @@ class Dashboard extends React.Component {
                 )}
             </FavesPanelWrap>
             <NewsFeedWrap>
-                <h2>News Feed</h2>
+                <SubHeader text="News Feed" />
                 {this.state.articles.map((article, i) => 
                     <NewsItem 
                         index={i}
