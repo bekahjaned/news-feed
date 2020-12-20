@@ -9,8 +9,11 @@ import NewsItem from '../NewsItem/';
 import FaveNewsItem from '../FaveNewsItem/';
 
 
-const apiKey = '43256f4d342e40d5a57cf8f026b81473';
-const url = `http://newsapi.org/v2/top-headlines?country=ca&pageSize=30&apiKey=${apiKey}`;
+// const apiKey = '43256f4d342e40d5a57cf8f026b81473';
+// const url = `http://newsapi.org/v2/top-headlines?country=ca&pageSize=30&apiKey=${apiKey}`;
+
+const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
+const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`;
 
 class Dashboard extends React.Component {
     constructor() {
@@ -29,7 +32,7 @@ class Dashboard extends React.Component {
     getNews = async () => {
         try {
           let data = await axios.get(`${url}`).then(({ data }) => data);
-          let articles = data.articles;
+          let articles = data.results;
           this.setState({ articles: articles });
           console.log("New news!");
         } catch (err) {
@@ -76,9 +79,9 @@ class Dashboard extends React.Component {
                         index={i}
                         key={fave.title}
                         title={fave.title} 
-                        description={fave.description}
+                        description={fave.abstract}
                         url={fave.url}
-                        date={fave.publishedAt}  
+                        date={fave.published_date}  
                         onClick={this.deleteFave.bind(this, i)}
                     />
                 )}
@@ -90,9 +93,9 @@ class Dashboard extends React.Component {
                         index={i}
                         key={article.title}
                         title={article.title} 
-                        description={article.description}
+                        description={article.abstract}
                         url={article.url}
-                        date={article.publishedAt}
+                        date={article.published_date}
                         onClick={this.addFave.bind(this, i)}
                     />
                 )}
