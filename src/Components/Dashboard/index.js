@@ -10,10 +10,6 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 
 import NewsItem from '../NewsItem/';
 
-
-// const apiKey = '43256f4d342e40d5a57cf8f026b81473';
-// const url = `http://newsapi.org/v2/top-headlines?country=ca&pageSize=30&apiKey=${apiKey}`;
-
 const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`;
 
@@ -30,7 +26,7 @@ class Dashboard extends React.Component {
         setInterval(this.getNews, 180000);
     };
 
-      
+    
     getNews = async () => {
         try {
           let data = await axios.get(`${url}`).then(({ data }) => data);
@@ -46,7 +42,7 @@ class Dashboard extends React.Component {
     // I put it here so I am just updating it in addFave()
     favesSet = new Set();
 
-    addFave = (index, favesSet) => {
+    addFave = (index) => {
         let faveArticle = this.state.articles[index];
         this.favesSet.add(faveArticle);
         
