@@ -27,12 +27,12 @@ class Dashboard extends React.Component {
     componentDidMount = () => {
         this._isMounted = true;
         this.getNews() 
-        this.task.start();
+        // this.task.start();
     }
 
     componentWillUnmount = () => {
         this._isMounted = false;
-        this.task.stop();
+        // this.task.stop();
     } 
 
     getNews = async () => {
@@ -51,9 +51,9 @@ class Dashboard extends React.Component {
         };
     };
 
-    task = cron.schedule('5 * * * * *', () => {
-        this.getNews();
-      });
+    // task = cron.schedule('5 * * * * *', () => {
+    //     this.getNews();
+    //   });
 
 
     // is this weird?
