@@ -89,52 +89,52 @@ class Dashboard extends React.Component {
             faves: faves
         }));
     }
-    
 
     render() {
+        const { articles, faves, showFavourites } = this.state
 
-      return (
-        <DashboardWrap>
-            <FavesPanelWrap>
-                <SubHeader 
-                    text="Favourites"
-                    toggleMethod={this.toggleFavourites.bind(this)}
-                    className={this.state.showFavourites ? "pivot" : ""}
-                    icon={faChevronDown}
-                />
-                <div className={this.state.showFavourites ? "show" : "hide"}>
-                    {this.state.faves.map((fave, i) => 
+        return (
+            <DashboardWrap>
+                <FavesPanelWrap>
+                    <SubHeader 
+                        text="Favourites"
+                        toggleMethod={this.toggleFavourites.bind(this)}
+                        className={showFavourites ? "pivot" : ""}
+                        icon={faChevronDown}
+                    />
+                    <div className={showFavourites ? "show" : "hide"}>
+                        {faves.map((fave, i) => 
+                            <NewsItem 
+                                index={i}
+                                key={fave.title}
+                                image={fave.thumbnail_standard}
+                                title={fave.title} 
+                                description={fave.abstract}
+                                url={fave.url}
+                                date={fave.published_date}
+                                icon={faTrash} 
+                                onClick={this.deleteFave.bind(this, i)}
+                            />
+                        )}
+                    </div>
+                </FavesPanelWrap>
+                <NewsFeedWrap>
+                    <h2>News Feed</h2>
+                    {articles.map((article, i) => 
                         <NewsItem 
                             index={i}
-                            key={fave.title}
-                            image={fave.thumbnail_standard}
-                            title={fave.title} 
-                            description={fave.abstract}
-                            url={fave.url}
-                            date={fave.published_date}
-                            icon={faTrash} 
-                            onClick={this.deleteFave.bind(this, i)}
+                            key={article.title}
+                            image={article.thumbnail_standard}
+                            title={article.title} 
+                            description={article.abstract}
+                            url={article.url}
+                            date={article.published_date}
+                            icon={faHeart}
+                            onClick={this.addFave.bind(this, i)}
                         />
                     )}
-                </div>
-            </FavesPanelWrap>
-            <NewsFeedWrap>
-                <h2>News Feed</h2>
-                {this.state.articles.map((article, i) => 
-                    <NewsItem 
-                        index={i}
-                        key={article.title}
-                        image={article.thumbnail_standard}
-                        title={article.title} 
-                        description={article.abstract}
-                        url={article.url}
-                        date={article.published_date}
-                        icon={faHeart}
-                        onClick={this.addFave.bind(this, i)}
-                    />
-                )}
-            </NewsFeedWrap>
-        </DashboardWrap>
+                </NewsFeedWrap>
+            </DashboardWrap>
         )  
     } 
 }
