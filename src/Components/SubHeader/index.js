@@ -1,10 +1,15 @@
 import React from 'react';
 
-function SubHeader({text}) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { SubHeaderWrap } from '../../Elements/SubHeaderWrap/'
+
+function SubHeader({text, icon, toggleMethod, className}) {
     return (
-        <div>
+        <SubHeaderWrap>
             <h2>{text}</h2>
-        </div>
+            <FontAwesomeIcon className={className} onClick={toggleMethod} icon={icon} />
+        </SubHeaderWrap>
     );
 };
 

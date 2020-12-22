@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as cron from 'node-cron'
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { DashboardWrap } from '../../Elements/DashboardWrap/'
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
@@ -20,13 +20,14 @@ class Dashboard extends React.Component {
     state = {
         articles: [],
         faves: [],
+        showFavourites: true
     };
 
     _isMounted = false;
 
     componentDidMount = () => {
         this._isMounted = true;
-        this.getNews() 
+        this.getNews()
         // this.task.start();
     }
 
@@ -50,6 +51,12 @@ class Dashboard extends React.Component {
           console.log(err);
         };
     };
+
+    toggleFavourites = () => {
+            this.setState({
+                showFavourites: !this.state.showFavourites
+            }) 
+    }
 
     // task = cron.schedule('5 * * * * *', () => {
     //     this.getNews();
@@ -89,23 +96,30 @@ class Dashboard extends React.Component {
       return (
         <DashboardWrap>
             <FavesPanelWrap>
-                <SubHeader text="Favourites" />
-                {this.state.faves.map((fave, i) => 
-                    <NewsItem 
-                        index={i}
-                        key={fave.title}
-                        image={fave.thumbnail_standard}
-                        title={fave.title} 
-                        description={fave.abstract}
-                        url={fave.url}
-                        date={fave.published_date}
-                        icon={faTrash} 
-                        onClick={this.deleteFave.bind(this, i)}
-                    />
-                )}
+                <SubHeader 
+                    text="Favourites"
+                    toggleMethod={this.toggleFavourites.bind(this)}
+                    className={this.state.showFavourites ? "pivot" : ""}
+                    icon={faChevronDown}
+                />
+                <div className={this.state.showFavourites ? "show" : "hide"}>
+                    {this.state.faves.map((fave, i) => 
+                        <NewsItem 
+                            index={i}
+                            key={fave.title}
+                            image={fave.thumbnail_standard}
+                            title={fave.title} 
+                            description={fave.abstract}
+                            url={fave.url}
+                            date={fave.published_date}
+                            icon={faTrash} 
+                            onClick={this.deleteFave.bind(this, i)}
+                        />
+                    )}
+                </div>
             </FavesPanelWrap>
             <NewsFeedWrap>
-                <SubHeader text="News Feed" />
+                <h2>News Feed</h2>
                 {this.state.articles.map((article, i) => 
                     <NewsItem 
                         index={i}
