@@ -98,6 +98,7 @@ class Dashboard extends React.Component {
                 <FavesPanelWrap>
                     <SubHeader 
                         text="Favourites"
+                        count={faves.length}
                         toggleMethod={this.toggleFavourites.bind(this)}
                         className={showFavourites ? "pivot" : ""}
                         icon={faChevronDown}

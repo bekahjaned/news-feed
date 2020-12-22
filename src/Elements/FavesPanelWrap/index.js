@@ -19,7 +19,7 @@ export const FavesPanelWrap = styled.div`
         bottom: 0;
         position: fixed;
 
-        div {
+        div.show.hide {
             display: block;
             height: 100%;
             background-color: #91f0e0;
