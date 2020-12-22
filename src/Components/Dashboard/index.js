@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import * as cron from 'node-cron'
+import * as cron from 'node-cron';
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faTrash, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-import { DashboardWrap } from '../../Elements/DashboardWrap/'
+import { DashboardWrap } from '../../Elements/DashboardWrap/';
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
 import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 
-import SubHeader from '../SubHeader/'
+import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
 // need to hide the key
@@ -23,18 +23,7 @@ class Dashboard extends React.Component {
         showFavourites: true
     };
 
-    _isMounted = false;
-
-    componentDidMount = () => {
-        this._isMounted = true;
-        this.getNews()
-        // this.task.start();
-    }
-
-    componentWillUnmount = () => {
-        this._isMounted = false;
-        // this.task.stop();
-    } 
+    _isMounted = false; 
 
     getNews = async () => {
         try {
@@ -52,16 +41,26 @@ class Dashboard extends React.Component {
         };
     };
 
+    task = cron.schedule('5 * * * * *', () => {
+        this.getNews();
+    });
+
+    componentDidMount = () => {
+        this._isMounted = true;
+        this.getNews();
+        this.task.start();
+    }
+
+    componentWillUnmount = () => {
+        this.task.stop();
+        this._isMounted = false;
+    }
+
     toggleFavourites = () => {
             this.setState({
                 showFavourites: !this.state.showFavourites
-            }) 
-    }
-
-    // task = cron.schedule('5 * * * * *', () => {
-    //     this.getNews();
-    //   });
-
+            }) ;
+    };
 
     // is this weird?
     // I put it here so I am just updating it in addFave()
@@ -71,7 +70,7 @@ class Dashboard extends React.Component {
         let faveArticle = this.state.articles[index];
         this.favesSet.add(faveArticle);
         
-        let faves = [...this.favesSet]
+        let faves = [...this.favesSet];
         this.setState((prevState) => ({
             ...prevState.articles,
             faves: faves
@@ -83,15 +82,15 @@ class Dashboard extends React.Component {
         let goneArticle = this.state.faves[index];
         this.favesSet.delete(goneArticle);
 
-        let faves = [...this.favesSet]
+        let faves = [...this.favesSet];
         this.setState((prevState) => ({
             ...prevState.articles,
             faves: faves
         }));
-    }
+    };
 
     render() {
-        const { articles, faves, showFavourites } = this.state
+        const { articles, faves, showFavourites } = this.state;
 
         return (
             <DashboardWrap>

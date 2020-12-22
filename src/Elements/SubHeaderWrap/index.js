@@ -26,12 +26,13 @@ export const SubHeaderWrap = styled.div`
 
     ${media.desktop} {
         h2 {
-            padding: 0;
             font-size: 24px;
+            margin-bottom: 0;
+            margin-top: 130px;
         }
 
         svg {
-            display: none;
+            margin-top: 130px;
         }
     }
 `
