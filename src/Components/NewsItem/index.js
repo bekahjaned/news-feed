@@ -18,7 +18,7 @@ function NewsItem({image, title, description, url, date, icon, onClick}) {
             <NewsItemBodyWrap>
                 <ThumbnailImage 
                     src={image} 
-                    alt={description} 
+                    alt={title} 
                 />
                 <NewsText 
                     title={title}
