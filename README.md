@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# News Feed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack application that displays a simple dashboard with a news feed. The articles are retrieved from the New York Times API. Users may add and remove articles to and from a Favourites side panel.
 
-## Available Scripts
+View live [here](https://what-is-new.vercel.app/)
 
-In the project directory, you can run:
+### Stack
 
-### `yarn start`
+The front-end client of this application was built with React js. Styled-components was used for styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The back-end server was built using Node.js with Express.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The node-cron module was used to periodically refresh the API every minute at the 5th second.
 
-### `yarn test`
+## Accessibility
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Colours were compared using this [chart](https://toolness.github.io/accessible-color-matrix/?n=white&n=light&n=bright&n=medium&n=dark&n=black&v=FFFFFF&v=D4F9F3&v=016099&v=FFD6D4&v=9143DF&v=000000) to ensure proper contrast.
 
-### `yarn build`
+Both icon buttons have different states for inactive, hover, and active.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All img tags have alternate text.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running this App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a full-stack app, so both the front-end and server must both be running in order for the application to work.
 
-### `yarn eject`
+## Marketing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Twitter who? The latest news feed app, The Timely Bizz allows you to scroll the freshest articles from New York Times, at a leisurely, non-stressful pace.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A demo gif of the application can be found [here](/front-end/data/news-feed-demo.gif).
