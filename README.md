@@ -2,7 +2,7 @@
 
 A full-stack application that displays a simple dashboard with a news feed. The articles are retrieved from the New York Times API. Users may add and remove articles to and from a Favourites side panel.
 
-View live [here](https://what-is-new.vercel.app/)
+View live [here](https://what-is-new.vercel.app/){:target="_blank" rel="noopener"}
 
 ### Stack
 
@@ -27,7 +27,3 @@ This is a full-stack app, so both the front-end and server must both be running 
 ## Marketing
 
 Twitter who? The latest news feed app, The Timely Bizz allows you to scroll the freshest articles from New York Times, at a leisurely, non-stressful pace.
-
-### Demo
-
-A demo gif of the application can be found [here](/front-end/data/news-feed-demo.gif).
