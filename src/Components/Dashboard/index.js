@@ -13,7 +13,7 @@ import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
 // need to hide the key
-const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
+const apiKey = process.env.REACT_APP_API_KEY;
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
 class Dashboard extends React.Component {
@@ -23,21 +23,21 @@ class Dashboard extends React.Component {
         showFavourites: true
     };
 
-    _isMounted = false; 
+    _isMounted = false;
 
     getNews = async () => {
         try {
-          let data = await axios.get(`${url}`)
-            .then(({ data }) => data);
-                let articles = data.results;
+            let data = await axios.get(`${url}`)
+                .then(({ data }) => data);
+            let articles = data.results;
 
-                if(this._isMounted === true) {
-                    this.setState({ 
-                        articles: articles 
-                    });
-                } 
+            if (this._isMounted === true) {
+                this.setState({
+                    articles: articles
+                });
+            }
         } catch (err) {
-          console.log(err);
+            console.log(err);
         };
     };
 
@@ -57,9 +57,9 @@ class Dashboard extends React.Component {
     }
 
     toggleFavourites = () => {
-            this.setState({
-                showFavourites: !this.state.showFavourites
-            }) ;
+        this.setState({
+            showFavourites: !this.state.showFavourites
+        });
     };
 
     // is this weird?
@@ -69,13 +69,13 @@ class Dashboard extends React.Component {
     addFave = (index) => {
         let faveArticle = this.state.articles[index];
         this.favesSet.add(faveArticle);
-        
+
         let faves = [...this.favesSet];
         this.setState((prevState) => ({
             ...prevState.articles,
             faves: faves
         }));
-        
+
     };
 
     deleteFave = (index) => {
@@ -95,7 +95,7 @@ class Dashboard extends React.Component {
         return (
             <DashboardWrap>
                 <FavesPanelWrap>
-                    <SubHeader 
+                    <SubHeader
                         text="Favourites"
                         count={faves.length}
                         toggleMethod={this.toggleFavourites.bind(this)}
@@ -103,16 +103,16 @@ class Dashboard extends React.Component {
                         icon={faChevronDown}
                     />
                     <div className={showFavourites ? "show" : "hide"}>
-                        {faves.map((fave, i) => 
-                            <NewsItem 
+                        {faves.map((fave, i) =>
+                            <NewsItem
                                 index={i}
                                 key={fave.title}
                                 image={fave.thumbnail_standard}
-                                title={fave.title} 
+                                title={fave.title}
                                 description={fave.abstract}
                                 url={fave.url}
                                 date={fave.published_date}
-                                icon={faTrash} 
+                                icon={faTrash}
                                 onClick={this.deleteFave.bind(this, i)}
                             />
                         )}
@@ -120,12 +120,12 @@ class Dashboard extends React.Component {
                 </FavesPanelWrap>
                 <NewsFeedWrap>
                     <h2>News Feed</h2>
-                    {articles.map((article, i) => 
-                        <NewsItem 
+                    {articles.map((article, i) =>
+                        <NewsItem
                             index={i}
                             key={article.title}
                             image={article.thumbnail_standard}
-                            title={article.title} 
+                            title={article.title}
                             description={article.abstract}
                             url={article.url}
                             date={article.published_date}
@@ -135,8 +135,8 @@ class Dashboard extends React.Component {
                     )}
                 </NewsFeedWrap>
             </DashboardWrap>
-        )  
-    } 
+        )
+    }
 }
 
 export default Dashboard;
