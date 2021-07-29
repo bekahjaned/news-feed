@@ -2,7 +2,7 @@
 
 A full-stack application that displays a simple dashboard with a news feed. The articles are retrieved from the New York Times API. Users may add and remove articles to and from a Favourites side panel.
 
-View live [here](https://what-is-new.vercel.app/){:target="_blank" rel="noopener"}
+View live [here](https://what-is-new.vercel.app/)
 
 ### Stack
 
