@@ -12,7 +12,6 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
-// need to hide the key
 const apiKey = process.env.REACT_APP_API_KEY;
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
