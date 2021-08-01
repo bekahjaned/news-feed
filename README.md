@@ -1,14 +1,12 @@
 # News Feed
 
-A full-stack application that displays a simple dashboard with a news feed. The articles are retrieved from the New York Times API. Users may add and remove articles to and from a Favourites side panel.
+A front-end application that displays a simple dashboard with a news feed. The articles are retrieved from the New York Times API. Users may add and remove articles to and from a Favourites side panel.
 
 View live [here](https://what-is-new.vercel.app/)
 
 ### Stack
 
 The front-end client of this application was built with React js. Styled-components was used for styling.
-
-The back-end server was built using Node.js with Express.
 
 The node-cron module was used to periodically refresh the API every minute at the 5th second.
 
@@ -19,10 +17,6 @@ Colours were compared using this [chart](https://toolness.github.io/accessible-c
 Both icon buttons have different states for inactive, hover, and active.
 
 All img tags have alternate text.
-
-### Running this App
-
-This is a full-stack app, so both the front-end and server must both be running in order for the application to work.
 
 ## Marketing
 
