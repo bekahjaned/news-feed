@@ -61,8 +61,6 @@ class Dashboard extends React.Component {
         });
     };
 
-    // is this weird?
-    // I put it here so I am just updating it in addFave()
     favesSet = new Set();
 
     addFave = (index) => {
@@ -90,6 +88,7 @@ class Dashboard extends React.Component {
 
     render() {
         const { articles, faves, showFavourites } = this.state;
+        console.log(articles)
 
         return (
             <DashboardWrap>
