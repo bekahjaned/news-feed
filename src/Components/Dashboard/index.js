@@ -12,7 +12,6 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
-// need to hide the key
 const apiKey = process.env.REACT_APP_API_KEY;
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
@@ -62,8 +61,6 @@ class Dashboard extends React.Component {
         });
     };
 
-    // is this weird?
-    // I put it here so I am just updating it in addFave()
     favesSet = new Set();
 
     addFave = (index) => {
@@ -91,6 +88,7 @@ class Dashboard extends React.Component {
 
     render() {
         const { articles, faves, showFavourites } = this.state;
+        console.log(articles)
 
         return (
             <DashboardWrap>

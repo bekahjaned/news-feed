@@ -5,7 +5,7 @@ export const NewsItemFooterWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 15px 0px;
-    margin-left: 90px;
+    margin-left: 115px;
 
     .icon {
         color: #9143DF;

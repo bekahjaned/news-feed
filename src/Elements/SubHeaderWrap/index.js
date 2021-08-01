@@ -14,13 +14,13 @@ export const SubHeaderWrap = styled.div`
         font-size: 20px;
     }
 
+    svg {
+        cursor: pointer;
+    }
+
     svg.pivot {
         cursor: pointer;
         transform: rotate(180deg) 
-    }
-
-    svg {
-        cursor: pointer;
     }
 
 
@@ -33,6 +33,11 @@ export const SubHeaderWrap = styled.div`
 
         svg {
             margin-top: 130px;
+            display: none;
+        }
+
+        span.count {
+            display: none;
         }
     }
 `
