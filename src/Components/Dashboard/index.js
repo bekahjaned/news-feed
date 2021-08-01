@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
-import * as cron from 'node-cron';
+// import axios from 'axios';
+// import * as cron from 'node-cron';
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faTrash, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -12,49 +12,59 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
-// need to hide the key
-const apiKey = process.env.REACT_APP_API_KEY;
-const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
+// const apiKey = process.env.REACT_APP_API_KEY;
+// const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
 class Dashboard extends React.Component {
     state = {
         articles: [],
         faves: [],
-        showFavourites: true
+        showFavourites: true,
+        apiResponse: ""
     };
+
+    callAPI() {
+        fetch("http://localhost:9000/testAPI")
+            .then(res => res.text())
+            .then(res => this.setState({ apiResponse: res }));
+    }
+
+    componentWillMount() {
+        this.callAPI();
+    }
 
     _isMounted = false;
 
-    getNews = async () => {
-        try {
-            let data = await axios.get(`${url}`)
-                .then(({ data }) => data);
-            let articles = data.results;
+    // getNews = async () => {
+    //     try {
+    //         let data = await axios.get(`${url}`)
+    //             .then(({ data }) => data);
+    //         let articles = data.results;
 
-            if (this._isMounted === true) {
-                this.setState({
-                    articles: articles
-                });
-            }
-        } catch (err) {
-            console.log(err);
-        };
-    };
+    //         if (this._isMounted === true) {
+    //             this.setState({
+    //                 articles: articles
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.log(err);
+    //     };
+    // };
 
-    task = cron.schedule('5 * * * * *', () => {
-        this.getNews();
-    });
+    // task = cron.schedule('5 * * * * *', () => {
+    //     this.getNews();
+    // });
 
-    componentDidMount = () => {
-        this._isMounted = true;
-        this.getNews();
-        this.task.start();
-    }
+    // componentDidMount = () => {
+    //     this._isMounted = true;
+    //     this.getNews();
+    //     this.task.start();
+    // }
 
-    componentWillUnmount = () => {
-        this.task.stop();
-        this._isMounted = false;
-    }
+    // componentWillUnmount = () => {
+    //     this.task.stop();
+    //     this._isMounted = false;
+    // }
 
     toggleFavourites = () => {
         this.setState({
@@ -120,6 +130,7 @@ class Dashboard extends React.Component {
                 </FavesPanelWrap>
                 <NewsFeedWrap>
                     <h2>News Feed</h2>
+                    <p>{this.state.apiResponse}</p>
                     {articles.map((article, i) =>
                         <NewsItem
                             index={i}
