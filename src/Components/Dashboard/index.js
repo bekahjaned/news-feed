@@ -2,8 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import * as cron from 'node-cron';
 
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faTrash, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { DashboardWrap } from '../../Elements/DashboardWrap/';
 import { FavesPanelWrap } from '../../Elements/FavesPanelWrap/';
@@ -19,7 +20,7 @@ class Dashboard extends React.Component {
     state = {
         articles: [],
         faves: [],
-        showFavourites: true
+        showFavourites: true,
     };
 
     _isMounted = false;
@@ -70,7 +71,7 @@ class Dashboard extends React.Component {
         let faves = [...this.favesSet];
         this.setState((prevState) => ({
             ...prevState.articles,
-            faves: faves
+            faves: faves,
         }));
 
     };
@@ -82,9 +83,15 @@ class Dashboard extends React.Component {
         let faves = [...this.favesSet];
         this.setState((prevState) => ({
             ...prevState.articles,
-            faves: faves
+            faves: faves,
         }));
     };
+
+    changeIcon = (index) => {
+        // if this.state.faves includes article
+        // change icon to faHeartSolid
+        // else icon should be faHeartOutline
+    }
 
     render() {
         const { articles, faves, showFavourites } = this.state;
@@ -110,7 +117,7 @@ class Dashboard extends React.Component {
                                 description={fave.abstract}
                                 url={fave.url}
                                 date={fave.published_date}
-                                icon={faTrash}
+                                icon={faHeartSolid}
                                 onClick={this.deleteFave.bind(this, i)}
                             />
                         )}
@@ -127,7 +134,7 @@ class Dashboard extends React.Component {
                             description={article.abstract}
                             url={article.url}
                             date={article.published_date}
-                            icon={faHeart}
+                            icon={faHeartOutline}
                             onClick={this.addFave.bind(this, i)}
                         />
                     )}
