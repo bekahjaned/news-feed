@@ -12,7 +12,7 @@ import { NewsFeedWrap } from '../../Elements/NewsFeedWrap/';
 import SubHeader from '../SubHeader/';
 import NewsItem from '../NewsItem/';
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = 'nmMjFbj1mVIQZAz0kzwABm8NLksOucBq';
 const url = `https://api.nytimes.com/svc/news/v3/content/all/all.json?page=50&api-key=${apiKey}`;
 
 class Dashboard extends React.Component {
