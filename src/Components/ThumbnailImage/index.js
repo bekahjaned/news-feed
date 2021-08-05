@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ThumbnailImageWrap } from '../../Elements/ThumbnailImageWrap/'
 
-import NYT_Logo from '../../images/new-york-times-square.png'
+import NYT_Logo from '../../assets/new-york-times-square.png'
 
 function ThumbnailImage({ src, alt }) {
     return (

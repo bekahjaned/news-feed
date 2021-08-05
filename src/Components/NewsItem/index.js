@@ -12,7 +12,6 @@ import Date from '../Date/'
 
 function NewsItem({ image, title, description, url, date, icon, onClick }) {
 
-
     return (
         <NewsItemWrap>
             <NewsItemBodyWrap>

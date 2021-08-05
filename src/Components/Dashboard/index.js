@@ -4,6 +4,7 @@ import * as cron from 'node-cron';
 
 import { faHeart as faHeartOutline } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { DashboardWrap } from '../../Elements/DashboardWrap/';
@@ -62,6 +63,44 @@ class Dashboard extends React.Component {
         });
     };
 
+    showNews = (articles) => {
+        const news = articles.map((article, i) => {
+            return (
+                <NewsItem
+                    index={i}
+                    key={article.title}
+                    image={article.thumbnail_standard}
+                    title={article.title}
+                    description={article.abstract}
+                    url={article.url}
+                    date={article.published_date}
+                    icon={this.state.faves.includes(article) ? faHeartSolid : faHeartOutline}
+                    onClick={this.addFave.bind(this, i)}
+                />
+            )
+        })
+        return news
+    }
+
+    showFaves = (faves) => {
+        const faveNews = faves.map((fave, i) => {
+            return (
+                <NewsItem
+                    index={i}
+                    key={fave.title}
+                    image={fave.thumbnail_standard}
+                    title={fave.title}
+                    description={fave.abstract}
+                    url={fave.url}
+                    date={fave.published_date}
+                    icon={faTrash}
+                    onClick={this.deleteFave.bind(this, i)}
+                />
+            )
+        })
+        return faveNews
+    }
+
     favesSet = new Set();
 
     addFave = (index) => {
@@ -73,7 +112,6 @@ class Dashboard extends React.Component {
             ...prevState.articles,
             faves: faves,
         }));
-
     };
 
     deleteFave = (index) => {
@@ -87,18 +125,14 @@ class Dashboard extends React.Component {
         }));
     };
 
-    changeIcon = (index) => {
-        // if this.state.faves includes article
-        // change icon to faHeartSolid
-        // else icon should be faHeartOutline
-    }
-
     render() {
         const { articles, faves, showFavourites } = this.state;
-        console.log(articles)
+        const news = this.showNews(articles)
+        const faveNews = this.showFaves(faves)
 
         return (
             <DashboardWrap>
+                {/* create FavesPanel component, can move deleteFave there */}
                 <FavesPanelWrap>
                     <SubHeader
                         text="Favourites"
@@ -108,36 +142,13 @@ class Dashboard extends React.Component {
                         icon={faChevronDown}
                     />
                     <div className={showFavourites ? "show" : "hide"}>
-                        {faves.map((fave, i) =>
-                            <NewsItem
-                                index={i}
-                                key={fave.title}
-                                image={fave.thumbnail_standard}
-                                title={fave.title}
-                                description={fave.abstract}
-                                url={fave.url}
-                                date={fave.published_date}
-                                icon={faHeartSolid}
-                                onClick={this.deleteFave.bind(this, i)}
-                            />
-                        )}
+                        {faveNews}
                     </div>
                 </FavesPanelWrap>
+                {/* create NewsFeed component, can more addFave */}
                 <NewsFeedWrap>
                     <h2>News Feed</h2>
-                    {articles.map((article, i) =>
-                        <NewsItem
-                            index={i}
-                            key={article.title}
-                            image={article.thumbnail_standard}
-                            title={article.title}
-                            description={article.abstract}
-                            url={article.url}
-                            date={article.published_date}
-                            icon={faHeartOutline}
-                            onClick={this.addFave.bind(this, i)}
-                        />
-                    )}
+                    {news}
                 </NewsFeedWrap>
             </DashboardWrap>
         )
