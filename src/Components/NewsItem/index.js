@@ -10,17 +10,16 @@ import ThumbnailImage from '../ThumbnailImage/'
 import NewsText from '../NewsText/'
 import Date from '../Date/'
 
-function NewsItem({image, title, description, url, date, icon, onClick}) {
-    
-   
+function NewsItem({ image, title, description, url, date, icon, onClick }) {
+
     return (
         <NewsItemWrap>
             <NewsItemBodyWrap>
-                <ThumbnailImage 
-                    src={image} 
-                    alt={title} 
+                <ThumbnailImage
+                    src={image}
+                    alt={title}
                 />
-                <NewsText 
+                <NewsText
                     title={title}
                     description={description}
                     url={url}
@@ -30,10 +29,10 @@ function NewsItem({image, title, description, url, date, icon, onClick}) {
                 <Date
                     date={date}
                 />
-                <FontAwesomeIcon 
-                    onClick={onClick} 
-                    className="icon" 
-                    icon={icon} /> 
+                <FontAwesomeIcon
+                    onClick={onClick}
+                    className="icon"
+                    icon={icon} />
             </NewsItemFooterWrap>
         </NewsItemWrap>
     );
