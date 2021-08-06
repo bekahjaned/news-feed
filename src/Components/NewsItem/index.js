@@ -29,10 +29,12 @@ function NewsItem({ image, title, description, url, date, icon, onClick }) {
                 <Date
                     date={date}
                 />
-                <FontAwesomeIcon
-                    onClick={onClick}
-                    className="icon"
-                    icon={icon} />
+                <div className="mask">
+                    <FontAwesomeIcon
+                        onClick={onClick}
+                        className="icon"
+                        icon={icon} />
+                </div>
             </NewsItemFooterWrap>
         </NewsItemWrap>
     );

@@ -6,7 +6,7 @@ export const DateWrap = styled.div`
     p {
         margin: 0;
         font-size: 12px;
-        color: rgba(0, 0, 0, 0.7);
+        color: #D9D9D9;
     }   
 
     ${media.desktop} {
