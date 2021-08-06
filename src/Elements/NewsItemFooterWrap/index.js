@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+const media = {
+    desktop: "@media(min-width: 330px)",
+
+};
+
 export const NewsItemFooterWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 0px;
-    margin-left: 115px;
 
     .mask {
         display: flex;
@@ -26,6 +30,9 @@ export const NewsItemFooterWrap = styled.div`
         :active {
             background: rgba(184, 100, 250, 0.1);
         }
+    }
+    ${media.desktop} {
+        margin-left: 115px;
     }
      
 `
