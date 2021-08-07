@@ -148,14 +148,7 @@ class Dashboard extends React.Component {
                 {/* create NewsFeed component, can more addFave */}
                 <NewsFeedWrap>
                     <h2>News Feed</h2>
-                    {/* {news} */}
-                    <NewsItem
-                        title={"Title"}
-                        description={"This describes the title. Okay?"}
-                        url={"www.google.com"}
-                        icon={faHeartOutline}
-                        date={"2021-08-06"}
-                    />
+                    {news}
                 </NewsFeedWrap>
             </DashboardWrap>
         )

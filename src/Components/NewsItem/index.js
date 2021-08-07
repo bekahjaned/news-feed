@@ -29,9 +29,8 @@ function NewsItem({ image, title, description, url, date, icon, onClick }) {
                 <Date
                     date={date}
                 />
-                <div className="mask">
+                <div className="mask" onClick={onClick}>
                     <FontAwesomeIcon
-                        onClick={onClick}
                         className="icon"
                         icon={icon} />
                 </div>
