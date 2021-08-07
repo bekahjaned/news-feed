@@ -1,22 +1,38 @@
 import styled from 'styled-components';
 
+const media = {
+    desktop: "@media(min-width: 330px)",
+
+};
+
 export const NewsItemFooterWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 0px;
-    margin-left: 115px;
 
-    .icon {
-        color: #9143DF;
+    .mask {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
         cursor: pointer;
 
+        .icon {
+            color: #B864FA;
+        } 
         :hover {
-            color: #6B1FB6;
+            background: rgba(184, 100, 250, 0.2);
         }
-    
+
         :active {
-            color: #51188A;
+            background: rgba(184, 100, 250, 0.1);
         }
-    }  
+    }
+    ${media.desktop} {
+        margin-left: 115px;
+    }
+     
 `

@@ -7,11 +7,12 @@ export const SubHeaderWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #91f0e0;
+    background-color: #1E1E1E;
+    color: #FAFAFA;
 
     h2 { 
         padding-right: 8px;
-        font-size: 20px;
+        font-size: 1.3rem;
     }
 
     svg {
@@ -26,7 +27,7 @@ export const SubHeaderWrap = styled.div`
 
     ${media.desktop} {
         h2 {
-            font-size: 24px;
+            font-size: 1.5rem;
             margin-bottom: 0;
             margin-top: 130px;
         }

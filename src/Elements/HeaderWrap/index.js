@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
-const media = { desktop: "@media(min-width: 800px)" };
+const media = {
+    desktop: "@media(min-width: 1080px)",
+    ipad: "@media(min-width: 768px)",
+    mobile: "@media(min-width: 320px)"
+};
 
 export const HeaderWrap = styled.div`
-    background-color: #6B1FB6;
+    background-color: #19111F;
+    border: 1px solid #2E064C;
     display: flex;
     align-items: center;
     padding: 30px 0;
@@ -12,12 +17,17 @@ export const HeaderWrap = styled.div`
     top: 0;
     width: 100%;
     height: 50px;
-    color: white;
+    color: #FAFAFA;
 
     h1 {
         margin: 0 auto;
         font-family: 'Adamina', serif;
-        font-size: 24px;
+    }
+
+    ${media.ipad} {
+        h1 {
+            font-size: 2rem;
+        }
     }
 
     ${media.desktop} {
@@ -25,7 +35,7 @@ export const HeaderWrap = styled.div`
 
         h1 {
             text-align: center;
-            font-size: 36px;
+            font-size: 3rem;
         }
     }
     
