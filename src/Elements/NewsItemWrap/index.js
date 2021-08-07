@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const NewsItemWrap = styled.div`
     width: 85%;
-    background-color: #27232A;
+    background-color: #161119;
     color: #FAFAFA;
     margin: 20px auto;
     text-align: left;
@@ -12,7 +12,7 @@ export const NewsItemWrap = styled.div`
     border-radius: 8px;
 
     :hover {
-        background-color: #2D282F;
+        background-color: #1F1B22;
     }
 `
 

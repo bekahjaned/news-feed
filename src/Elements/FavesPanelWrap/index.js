@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const media = { desktop: "@media(min-width: 800px)" };
 
 export const FavesPanelWrap = styled.div`
-    background-color: #91f0e0;
+    background-color: #1E1E1E;
 
     div.hide {
         display: none;
@@ -22,7 +22,7 @@ export const FavesPanelWrap = styled.div`
         div.show.hide {
             display: block;
             height: 100%;
-            background-color: #91f0e0;
+            background-color: #1E1E1E;
             overflow-x: scroll;
             overflow-y: scroll;
         }

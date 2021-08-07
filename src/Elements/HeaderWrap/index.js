@@ -7,7 +7,8 @@ const media = {
 };
 
 export const HeaderWrap = styled.div`
-    background-color: #121212;
+    background-color: #19111F;
+    border: 1px solid #2E064C;
     display: flex;
     align-items: center;
     padding: 30px 0;
