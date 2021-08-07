@@ -7,14 +7,10 @@ export const NewsTextWrap = styled.div`
     }
 
     a {
-        color: #9143DF;
+        color: #B864FA;
 
         :hover {
-            color: #6B1FB6;
-        }
-
-        :active {
-            color: #51188A;
+            color: #A232FA;
         }
     }
 `
