@@ -8,11 +8,13 @@ View live [here](https://what-is-new.vercel.app/)
 
 The front-end client of this application was built with React js. Styled-components was used for styling.
 
+Axios was used to make request to external API.
+
 The node-cron module was used to periodically refresh the API every minute at the 5th second.
 
 ## Accessibility
 
-Colours were compared using this [chart](https://toolness.github.io/accessible-color-matrix/?n=white&n=light&n=bright&n=medium&n=dark&n=black&v=FFFFFF&v=D4F9F3&v=016099&v=FFD6D4&v=9143DF&v=000000) to ensure proper contrast.
+Colours were compared using this [chart](https://toolness.github.io/accessible-color-matrix/?n=text&n=header%20%26%20feed&n=border&n=heart&n=side%20panel&n=card&v=FAFAFA&v=19111F&v=2E064C&v=B864FA&v=1E1E1E&v=1F1B22) to ensure proper contrast.
 
 Both icon buttons have different states for inactive, hover, and active.
 
