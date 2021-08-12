@@ -19,7 +19,7 @@ export const NewsFeedWrap = styled.div`
         
         width: 60%;
         padding-bottom: 40px;
-        margin-left: 40%
+        margin-left: 40%;
     }
 
 `
